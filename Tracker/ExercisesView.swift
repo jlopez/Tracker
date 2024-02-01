@@ -18,7 +18,7 @@ struct ExercisesView: View {
             List {
                 ForEach(exercises) { exercise in
                     NavigationLink {
-                        Text("Item at \(exercise.createdAt, format: Date.FormatStyle(date: .numeric, time: .standard))")
+                        ExerciseSetsView(exercise: exercise)
                     } label: {
                         Text(exercise.name)
                     }
