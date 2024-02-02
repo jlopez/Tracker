@@ -19,6 +19,7 @@ struct ExercisesView: View {
                 ForEach(exercises) { exercise in
                     NavigationLink {
                         ExerciseSetsView(exercise: exercise)
+                            .navigationBarTitleDisplayMode(.large)
                     } label: {
                         Text(exercise.name)
                     }
@@ -98,6 +99,13 @@ struct NewExerciseView: View {
 }
 
 #Preview {
-    ExercisesView()
-        .modelContainer(for: Exercise.self, inMemory: true)
+    let modelContainer = try! ModelContainer(for: Exercise.self, configurations: .init(isStoredInMemoryOnly: true))
+    let exercise = Exercise(name: "Biceps Curl", lastReps: 8, lastWeight: 10)
+    modelContainer.mainContext.insert(exercise)
+    let endedAt = Date()
+    let startedAt = endedAt.addingTimeInterval(-17.38)
+    let exerciseSet = ExerciseSet(startedAt: startedAt, endedAt: endedAt, reps: 8, weight: 10)
+    exercise.exerciseSets.append(exerciseSet)
+    return ExercisesView()
+        .modelContainer(modelContainer)
 }
