@@ -11,9 +11,13 @@ struct ExerciseSetsView: View {
     @Environment(\.modelContext) var modelContext
     let exercise: Exercise
     @State var showAddSet: Bool = false
+    var lastEnd: Date {
+        exercise.exerciseSets.max(by: { $0.endedAt < $1.endedAt })?.endedAt ?? Date.distantPast
+    }
 
     var body: some View {
         List {
+            RestTimerView(referenceDate: lastEnd)
             ForEach(exercise.exerciseSets) { exerciseSet in
                 ExerciseSetRow(exerciseSet: exerciseSet)
             }

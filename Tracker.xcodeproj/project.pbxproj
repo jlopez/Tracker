@@ -16,6 +16,7 @@
 		A5271FCC2B6B6EBD0049CD04 /* TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5271FCB2B6B6EBD0049CD04 /* TrackerUITests.swift */; };
 		A5271FCE2B6B6EBD0049CD04 /* TrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5271FCD2B6B6EBD0049CD04 /* TrackerUITestsLaunchTests.swift */; };
 		A5271FDB2B6B81430049CD04 /* ExerciseSetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5271FDA2B6B81430049CD04 /* ExerciseSetsView.swift */; };
+		A5271FDD2B6DC90D0049CD04 /* RestTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5271FDC2B6DC90D0049CD04 /* RestTimerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		A5271FCB2B6B6EBD0049CD04 /* TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerUITests.swift; sourceTree = "<group>"; };
 		A5271FCD2B6B6EBD0049CD04 /* TrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A5271FDA2B6B81430049CD04 /* ExerciseSetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSetsView.swift; sourceTree = "<group>"; };
+		A5271FDC2B6DC90D0049CD04 /* RestTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestTimerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				A5271FB72B6B6EBD0049CD04 /* Tracker.entitlements */,
 				A5271FB82B6B6EBD0049CD04 /* Info.plist */,
 				A5271FB42B6B6EBD0049CD04 /* Preview Content */,
+				A5271FDC2B6DC90D0049CD04 /* RestTimerView.swift */,
 			);
 			path = Tracker;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5271FAF2B6B6EBB0049CD04 /* ExercisesView.swift in Sources */,
+				A5271FDD2B6DC90D0049CD04 /* RestTimerView.swift in Sources */,
 				A5271FB12B6B6EBB0049CD04 /* Exercise.swift in Sources */,
 				A5271FAD2B6B6EBB0049CD04 /* TrackerApp.swift in Sources */,
 				A5271FDB2B6B81430049CD04 /* ExerciseSetsView.swift in Sources */,
