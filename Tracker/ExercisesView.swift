@@ -18,7 +18,7 @@ struct ExercisesView: View {
             List {
                 ForEach(exercises) { exercise in
                     NavigationLink {
-                        ExerciseSetsView(exercise: exercise)
+                        ExerciseView(exercise: exercise)
                             .navigationBarTitleDisplayMode(.large)
                     } label: {
                         Text(exercise.name)

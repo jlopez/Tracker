@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A51053482B8940ED008EF80C /* SetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51053472B8940ED008EF80C /* SetsView.swift */; };
 		A5271FAD2B6B6EBB0049CD04 /* TrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5271FAC2B6B6EBB0049CD04 /* TrackerApp.swift */; };
 		A5271FAF2B6B6EBB0049CD04 /* ExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5271FAE2B6B6EBB0049CD04 /* ExercisesView.swift */; };
 		A5271FB12B6B6EBB0049CD04 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5271FB02B6B6EBB0049CD04 /* Exercise.swift */; };
@@ -15,7 +16,7 @@
 		A5271FC22B6B6EBD0049CD04 /* TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5271FC12B6B6EBD0049CD04 /* TrackerTests.swift */; };
 		A5271FCC2B6B6EBD0049CD04 /* TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5271FCB2B6B6EBD0049CD04 /* TrackerUITests.swift */; };
 		A5271FCE2B6B6EBD0049CD04 /* TrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5271FCD2B6B6EBD0049CD04 /* TrackerUITestsLaunchTests.swift */; };
-		A5271FDB2B6B81430049CD04 /* ExerciseSetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5271FDA2B6B81430049CD04 /* ExerciseSetsView.swift */; };
+		A5271FDB2B6B81430049CD04 /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5271FDA2B6B81430049CD04 /* ExerciseView.swift */; };
 		A5271FDD2B6DC90D0049CD04 /* RestTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5271FDC2B6DC90D0049CD04 /* RestTimerView.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A51053472B8940ED008EF80C /* SetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsView.swift; sourceTree = "<group>"; };
 		A5271FA92B6B6EBB0049CD04 /* Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5271FAC2B6B6EBB0049CD04 /* TrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerApp.swift; sourceTree = "<group>"; };
 		A5271FAE2B6B6EBB0049CD04 /* ExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesView.swift; sourceTree = "<group>"; };
@@ -50,7 +52,7 @@
 		A5271FC72B6B6EBD0049CD04 /* TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5271FCB2B6B6EBD0049CD04 /* TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerUITests.swift; sourceTree = "<group>"; };
 		A5271FCD2B6B6EBD0049CD04 /* TrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		A5271FDA2B6B81430049CD04 /* ExerciseSetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSetsView.swift; sourceTree = "<group>"; };
+		A5271FDA2B6B81430049CD04 /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
 		A5271FDC2B6DC90D0049CD04 /* RestTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestTimerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +81,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A51053462B8940E1008EF80C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A51053472B8940ED008EF80C /* SetsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		A5271FA02B6B6EBB0049CD04 = {
 			isa = PBXGroup;
 			children = (
@@ -102,9 +112,10 @@
 		A5271FAB2B6B6EBB0049CD04 /* Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				A51053462B8940E1008EF80C /* Views */,
 				A5271FAC2B6B6EBB0049CD04 /* TrackerApp.swift */,
 				A5271FAE2B6B6EBB0049CD04 /* ExercisesView.swift */,
-				A5271FDA2B6B81430049CD04 /* ExerciseSetsView.swift */,
+				A5271FDA2B6B81430049CD04 /* ExerciseView.swift */,
 				A5271FB02B6B6EBB0049CD04 /* Exercise.swift */,
 				A5271FB22B6B6EBD0049CD04 /* Assets.xcassets */,
 				A5271FB72B6B6EBD0049CD04 /* Tracker.entitlements */,
@@ -273,8 +284,9 @@
 				A5271FAF2B6B6EBB0049CD04 /* ExercisesView.swift in Sources */,
 				A5271FDD2B6DC90D0049CD04 /* RestTimerView.swift in Sources */,
 				A5271FB12B6B6EBB0049CD04 /* Exercise.swift in Sources */,
+				A51053482B8940ED008EF80C /* SetsView.swift in Sources */,
 				A5271FAD2B6B6EBB0049CD04 /* TrackerApp.swift in Sources */,
-				A5271FDB2B6B81430049CD04 /* ExerciseSetsView.swift in Sources */,
+				A5271FDB2B6B81430049CD04 /* ExerciseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

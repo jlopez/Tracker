@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ExerciseSetsView: View {
+struct ExerciseView: View {
     @Environment(\.modelContext) var modelContext
     let exercise: Exercise
     @State var showAddSet: Bool = false
@@ -18,10 +18,7 @@ struct ExerciseSetsView: View {
     var body: some View {
         List {
             RestTimerView(referenceDate: lastEnd)
-            ForEach(exercise.exerciseSets) { exerciseSet in
-                ExerciseSetRow(exerciseSet: exerciseSet)
-            }
-            .onDelete(perform: deleteItems)
+            SetsView(exerciseSets: exercise.exerciseSets)
         }
         .navigationTitle(exercise.name)
         .toolbar {
@@ -36,12 +33,6 @@ struct ExerciseSetsView: View {
         .sheet(isPresented: $showAddSet) {
             NewExerciseSetView(exercise: exercise)
                 .presentationDetents([ .medium ])
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            exercise.exerciseSets.remove(atOffsets: offsets)
         }
     }
 }
@@ -196,7 +187,7 @@ struct NewExerciseSetView: View {
 #Preview {
     let exercise = Exercise(name: "Bicep Curls")
     return NavigationStack {
-        ExerciseSetsView(exercise: exercise)
+        ExerciseView(exercise: exercise)
             .modelContainer(for: Exercise.self, inMemory: true)
     }
 }
