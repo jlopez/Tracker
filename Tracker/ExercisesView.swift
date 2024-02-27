@@ -8,19 +8,22 @@
 import SwiftUI
 import SwiftData
 
+@Observable
+class Globals {
+    var navigationPath = NavigationPath()
+}
+
 struct ExercisesView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var exercises: [Exercise]
     @State private var showAddExercise: Bool = false
+    @State private var globals = Globals()
 
     var body: some View {
-        NavigationSplitView {
+        NavigationStack(path: $globals.navigationPath) {
             List {
                 ForEach(exercises) { exercise in
-                    NavigationLink {
-                        ExerciseView(exercise: exercise)
-                            .navigationBarTitleDisplayMode(.large)
-                    } label: {
+                    NavigationLink(value: exercise) {
                         Text(exercise.name)
                     }
                 }
@@ -28,21 +31,20 @@ struct ExercisesView: View {
             }
             .toolbar {
                 ToolbarItem {
-                    Button {
-                        showAddExercise.toggle()
-                    } label: {
-                        Label("Add Exercise", systemImage: "plus")
-                    }
+                    Button("Add Exercise", systemImage: "plus", action: addExercise)
                 }
             }
             .navigationTitle("Exercises")
-        } detail: {
-            Text("Select an exercise")
+            .navigationDestination(for: Exercise.self) { EditExerciseView(exercise: $0) }
+            .navigationDestination(for: ExerciseSet.self) { EditExerciseSetView(exerciseSet: $0) }
         }
-        .sheet(isPresented: $showAddExercise) {
-            NewExerciseView()
-                .presentationDetents([ .medium ])
-        }
+        .environment(globals)
+    }
+
+    private func addExercise() {
+        let exercise = Exercise()
+        modelContext.insert(exercise)
+        globals.navigationPath.append(exercise)
     }
 
     private func deleteItems(offsets: IndexSet) {
@@ -51,50 +53,6 @@ struct ExercisesView: View {
                 modelContext.delete(exercises[index])
             }
         }
-    }
-}
-
-struct NewExerciseView: View {
-    @Environment(\.dismiss) private var dismiss
-    @Environment(\.modelContext) private var modelContext
-    @State private var name: String = ""
-
-    var body: some View {
-        NavigationStack {
-            Form {
-                Section {
-                    TextField("Name", text: $name)
-                        .onSubmit(addExercise)
-                        .textContentType(.name)
-                        .textInputAutocapitalization(.words)
-                }
-            }
-            .navigationTitle("New Exercise")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Text("Cancel")
-                    }
-                }
-
-                ToolbarItem(placement: .confirmationAction) {
-                    Button(action: addExercise) {
-                        Text("Add")
-                    }
-                    .disabled(name.isEmpty)
-                }
-            }
-        }
-    }
-
-    func addExercise() {
-        guard !name.isEmpty else { return }
-        let newExercise = Exercise(name: name)
-        modelContext.insert(newExercise)
-        dismiss()
     }
 }
 

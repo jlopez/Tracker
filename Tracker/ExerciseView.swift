@@ -12,7 +12,7 @@ struct ExerciseView: View {
     let exercise: Exercise
     @State var showAddSet: Bool = false
     var lastEnd: Date {
-        exercise.exerciseSets.max(by: { $0.endedAt < $1.endedAt })?.endedAt ?? Date.distantPast
+        exercise.exerciseSets.max(by: { $0.endedAt ?? .distantPast < $1.endedAt ?? .distantPast })?.endedAt ?? Date.distantPast
     }
 
     var body: some View {
@@ -21,6 +21,7 @@ struct ExerciseView: View {
             SetsView(exerciseSets: exercise.exerciseSets)
         }
         .navigationTitle(exercise.name)
+        .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItem {
                 Button {
@@ -59,7 +60,9 @@ struct ExerciseSetRow: View {
         }
     }
 
-    func formatDate(_ date: Date) -> String {
+    func formatDate(_ date: Date?) -> String {
+        guard let date = date else { return "Not started" }
+
         let calendar = Calendar.current
         let now = Date.now
         let startOfToday = calendar.startOfDay(for: now)
@@ -87,12 +90,13 @@ struct ExerciseSetRow: View {
 }
 
 struct PoundsPerSecondView: View {
-    let poundsPerSecond: Double
+    let poundsPerSecond: Double?
 
     var body: some View {
-        let decimals = poundsPerSecond < 10 ? 1 : 0
-        let hue = min(max(0, poundsPerSecond / 100), 1) / 3
-        Text(poundsPerSecond, format: .number.precision(.fractionLength(decimals)))
+        let pps = poundsPerSecond ?? 0
+        let decimals = pps < 10 ? 1 : 0
+        let hue = min(max(0, pps / 100), 1) / 3
+        Text(pps, format: .number.precision(.fractionLength(decimals)))
             .foregroundColor(Color(hue: hue, saturation: 1, brightness: 1))
             .fontWeight(.bold)
             .font(.title3)

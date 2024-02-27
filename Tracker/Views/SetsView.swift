@@ -14,10 +14,10 @@ struct SetsView: View {
     init(exerciseSets: [ExerciseSet]) {
         let today = Calendar.current.startOfDay(for: .now)
         let groupings = Dictionary(grouping: exerciseSets) {
-            Calendar.current.startOfDay(for: $0.startedAt) == today
+            Calendar.current.startOfDay(for: $0.startedAt ?? .distantFuture) >= today
         }
-        self.today = groupings[true]?.sorted { $0.startedAt > $1.startedAt }
-        self.before = groupings[false]?.sorted { $0.startedAt > $1.startedAt }
+        self.today = groupings[true]?.sorted { $0.startedAt ?? .distantFuture > $1.startedAt ?? .distantFuture }
+        self.before = groupings[false]?.sorted { $0.startedAt ?? .distantFuture > $1.startedAt ?? .distantFuture }
     }
 
     var body: some View {

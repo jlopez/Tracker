@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		A51053482B8940ED008EF80C /* SetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51053472B8940ED008EF80C /* SetsView.swift */; };
+		A510534A2B894C38008EF80C /* ExerciseSetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51053492B894C38008EF80C /* ExerciseSetsView.swift */; };
+		A510534C2B894EC3008EF80C /* EditExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510534B2B894EC3008EF80C /* EditExerciseView.swift */; };
+		A510534E2B894EDE008EF80C /* EditExerciseSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A510534D2B894EDE008EF80C /* EditExerciseSetView.swift */; };
+		A51053512B894F5F008EF80C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51053502B894F5F008EF80C /* Extensions.swift */; };
 		A5271FAD2B6B6EBB0049CD04 /* TrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5271FAC2B6B6EBB0049CD04 /* TrackerApp.swift */; };
 		A5271FAF2B6B6EBB0049CD04 /* ExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5271FAE2B6B6EBB0049CD04 /* ExercisesView.swift */; };
 		A5271FB12B6B6EBB0049CD04 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5271FB02B6B6EBB0049CD04 /* Exercise.swift */; };
@@ -39,6 +43,10 @@
 
 /* Begin PBXFileReference section */
 		A51053472B8940ED008EF80C /* SetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsView.swift; sourceTree = "<group>"; };
+		A51053492B894C38008EF80C /* ExerciseSetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSetsView.swift; sourceTree = "<group>"; };
+		A510534B2B894EC3008EF80C /* EditExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExerciseView.swift; sourceTree = "<group>"; };
+		A510534D2B894EDE008EF80C /* EditExerciseSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExerciseSetView.swift; sourceTree = "<group>"; };
+		A51053502B894F5F008EF80C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A5271FA92B6B6EBB0049CD04 /* Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5271FAC2B6B6EBB0049CD04 /* TrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerApp.swift; sourceTree = "<group>"; };
 		A5271FAE2B6B6EBB0049CD04 /* ExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesView.swift; sourceTree = "<group>"; };
@@ -85,8 +93,19 @@
 			isa = PBXGroup;
 			children = (
 				A51053472B8940ED008EF80C /* SetsView.swift */,
+				A51053492B894C38008EF80C /* ExerciseSetsView.swift */,
+				A510534B2B894EC3008EF80C /* EditExerciseView.swift */,
+				A510534D2B894EDE008EF80C /* EditExerciseSetView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A510534F2B894F50008EF80C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A51053502B894F5F008EF80C /* Extensions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		A5271FA02B6B6EBB0049CD04 = {
@@ -112,6 +131,7 @@
 		A5271FAB2B6B6EBB0049CD04 /* Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				A510534F2B894F50008EF80C /* Helpers */,
 				A51053462B8940E1008EF80C /* Views */,
 				A5271FAC2B6B6EBB0049CD04 /* TrackerApp.swift */,
 				A5271FAE2B6B6EBB0049CD04 /* ExercisesView.swift */,
@@ -282,8 +302,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5271FAF2B6B6EBB0049CD04 /* ExercisesView.swift in Sources */,
+				A510534E2B894EDE008EF80C /* EditExerciseSetView.swift in Sources */,
 				A5271FDD2B6DC90D0049CD04 /* RestTimerView.swift in Sources */,
+				A510534C2B894EC3008EF80C /* EditExerciseView.swift in Sources */,
 				A5271FB12B6B6EBB0049CD04 /* Exercise.swift in Sources */,
+				A51053512B894F5F008EF80C /* Extensions.swift in Sources */,
+				A510534A2B894C38008EF80C /* ExerciseSetsView.swift in Sources */,
 				A51053482B8940ED008EF80C /* SetsView.swift in Sources */,
 				A5271FAD2B6B6EBB0049CD04 /* TrackerApp.swift in Sources */,
 				A5271FDB2B6B81430049CD04 /* ExerciseView.swift in Sources */,
