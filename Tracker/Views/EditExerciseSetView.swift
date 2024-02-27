@@ -66,3 +66,8 @@ struct EditExerciseSetView: View {
         }
     }
 }
+
+#Preview {
+    let exerciseSet = ExerciseSet()
+    return EditExerciseSetView(exerciseSet: exerciseSet)
+}

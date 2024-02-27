@@ -1,8 +1,8 @@
 //
-//  Item.swift
+//  Model.swift
 //  Tracker
 //
-//  Created by Jesus Lopez on 1/31/24.
+//  Created by Jesus Lopez on 2/26/24.
 //
 
 import Foundation
@@ -11,14 +11,16 @@ import SwiftData
 @Model
 final class Exercise {
     var createdAt = Date()
-    var name: String
+    var name: String = ""
     @Relationship(deleteRule: .cascade)
     var exerciseSets: [ExerciseSet]! = []
-    var lastReps: Int
-    var lastWeight: Int
+    var lastReps: Int = 0
+    var lastWeight: Int = 0
 
-    init(name: String = "", lastReps: Int = 0, lastWeight: Int = 0) {
+    init(createdAt: Date = .now, name: String = "", lastReps: Int = 0, lastWeight: Int = 0, exerciseSets: [ExerciseSet] = []) {
+        self.createdAt = createdAt
         self.name = name
+        self.exerciseSets = exerciseSets
         self.lastReps = lastReps
         self.lastWeight = lastWeight
     }
@@ -26,10 +28,11 @@ final class Exercise {
 
 @Model
 final class ExerciseSet {
+    var exercise: Exercise?
     var startedAt: Date?
     var endedAt: Date?
-    var reps: Int
-    var weight: Int
+    var reps: Int = 0
+    var weight: Int = 0
 
     var poundsPerSecond: Double? {
         guard let startedAt = startedAt, let endedAt = endedAt else { return nil }
@@ -40,7 +43,8 @@ final class ExerciseSet {
         Double(weight * reps)
     }
 
-    init(startedAt: Date? = nil, endedAt: Date? = nil, reps: Int = 0, weight: Int = 0) {
+    init(exercise: Exercise? = nil, startedAt: Date? = nil, endedAt: Date? = nil, reps: Int = 0, weight: Int = 0) {
+        self.exercise = exercise
         self.startedAt = startedAt
         self.endedAt = endedAt
         self.reps = reps
