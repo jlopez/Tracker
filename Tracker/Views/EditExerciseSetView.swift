@@ -37,7 +37,7 @@ struct EditExerciseSetView: View {
                 Toggle("Started", isOn: $hasStarted)
                 if hasStarted {
                     // TODO: Fix repetition
-                    DatePicker("startedAt", selection: $exerciseSet.startedAt ?? Date().addingTimeInterval(+5))
+                    DatePicker("startedAt", selection: $exerciseSet.startedAt ?? Date())
                 }
                 Toggle("Completed", isOn: $hasFinished)
                 if hasFinished {
@@ -52,7 +52,7 @@ struct EditExerciseSetView: View {
         .onChange(of: hasStarted) { old, new in
             if new {
                 // TODO: Fix repetition
-                exerciseSet.startedAt = Date().addingTimeInterval(+5)
+                exerciseSet.startedAt = .now
             } else {
                 exerciseSet.startedAt = nil
             }

@@ -16,7 +16,7 @@ struct ExerciseSetRow: View {
         HStack {
             PoundsPerSecondView(poundsPerSecond: exerciseSet.poundsPerSecond)
             VStack(alignment: .leading) {
-                Text("\(reps * weight) lbs")
+                Text("\(exerciseSet.totalPounds, specifier: "%.f") lbs")
                 Text(formatDate(exerciseSet.startedAt))
                     .font(.caption2)
             }

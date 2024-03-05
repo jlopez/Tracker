@@ -14,15 +14,11 @@ final class Exercise {
     var name: String = ""
     @Relationship(deleteRule: .cascade)
     var exerciseSets: [ExerciseSet]! = []
-    var lastReps: Int = 0
-    var lastWeight: Int = 0
 
-    init(createdAt: Date = .now, name: String = "", lastReps: Int = 0, lastWeight: Int = 0, exerciseSets: [ExerciseSet] = []) {
+    init(createdAt: Date = .now, name: String = "", exerciseSets: [ExerciseSet] = []) {
         self.createdAt = createdAt
         self.name = name
         self.exerciseSets = exerciseSets
-        self.lastReps = lastReps
-        self.lastWeight = lastWeight
     }
 }
 

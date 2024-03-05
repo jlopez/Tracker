@@ -12,6 +12,10 @@ struct EditExerciseView: View {
     @Environment(Globals.self) private var globals
     @Bindable var exercise: Exercise
 
+    var lastSet: ExerciseSet? { exercise.exerciseSets.max { $0.endedAt ?? .distantPast < $1.endedAt ?? .distantPast } }
+    var lastReps: Int { lastSet?.reps ?? 0 }
+    var lastWeight: Int { lastSet?.weight ?? 0 }
+
     var body: some View {
         Form {
             Section {
@@ -19,18 +23,22 @@ struct EditExerciseView: View {
                     .textInputAutocapitalization(.words)
             }
 
-            Section("Internals") {
-                DatePicker("createdAt", selection: $exercise.createdAt)
-                TextField("Last Reps", value: $exercise.lastReps, formatter: NumberFormatter())
-                    .keyboardType(.numberPad)
-                TextField("Last Weight", value: $exercise.lastReps, formatter: NumberFormatter())
-                    .keyboardType(.numberPad)
+            if let lastSet = lastSet, let endedAt = lastSet.endedAt {
+                Section("Last Set") {
+                    Text("Reps: \(lastSet.reps)")
+                    Text("Weight: \(lastSet.weight)")
+                    Text("Completed \(endedAt, style: .relative) ago")
+                }
             }
 
             if !exercise.exerciseSets.isEmpty {
                 Section("Sets") {
                     ExerciseSetsView(exerciseSets: exercise.exerciseSets)
                 }
+            }
+
+            Section("Internals") {
+                DatePicker("createdAt", selection: $exercise.createdAt)
             }
         }
         .toolbar {
@@ -44,8 +52,8 @@ struct EditExerciseView: View {
 
     func addExerciseSet() {
         let exerciseSet = ExerciseSet(
-            reps: exercise.lastReps,
-            weight: exercise.lastWeight
+            reps: lastReps,
+            weight: lastWeight
         )
         exercise.exerciseSets.append(exerciseSet)
         globals.navigationPath.append(exerciseSet)

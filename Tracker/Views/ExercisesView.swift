@@ -58,7 +58,7 @@ struct ExercisesView: View {
 
 #Preview {
     let modelContainer = try! ModelContainer(for: Exercise.self, configurations: .init(isStoredInMemoryOnly: true))
-    let exercise = Exercise(name: "Biceps Curl", lastReps: 8, lastWeight: 10)
+    let exercise = Exercise(name: "Biceps Curl")
     modelContainer.mainContext.insert(exercise)
     let endedAt = Date()
     let startedAt = endedAt.addingTimeInterval(-17.38)
