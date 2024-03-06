@@ -23,7 +23,7 @@ struct ExerciseSetRow: View {
             Spacer()
             VStack(alignment: .trailing) {
                 Text("\(reps) \(Image(systemName: "arrow.triangle.2.circlepath.circle.fill"))")
-                Text("\(weight) \(Image(systemName: "scalemass.fill"))")
+                Text("\(weight, specifier: "%.1f") \(Image(systemName: "scalemass.fill"))")
             }
             .font(.caption)
         }

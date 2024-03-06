@@ -14,7 +14,7 @@ struct EditExerciseView: View {
 
     var lastSet: ExerciseSet? { exercise.exerciseSets.max { $0.endedAt ?? .distantPast < $1.endedAt ?? .distantPast } }
     var lastReps: Int { lastSet?.reps ?? 0 }
-    var lastWeight: Int { lastSet?.weight ?? 0 }
+    var lastWeight: Double { lastSet?.weight ?? 0 }
 
     var body: some View {
         Form {
@@ -26,7 +26,7 @@ struct EditExerciseView: View {
             if let lastSet = lastSet, let endedAt = lastSet.endedAt {
                 Section("Last Set") {
                     Text("Reps: \(lastSet.reps)")
-                    Text("Weight: \(lastSet.weight)")
+                    Text("Weight: \(lastSet.weight, specifier: "%.1f")")
                     Text("Completed \(endedAt, style: .relative) ago")
                 }
             }

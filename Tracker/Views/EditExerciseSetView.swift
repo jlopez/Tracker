@@ -12,6 +12,14 @@ struct EditExerciseSetView: View {
     @State private var hasStarted = false
     @State private var hasFinished = false
 
+    var doubleFormatter: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 1
+        return formatter
+    }
+
     init(exerciseSet: ExerciseSet) {
         self.exerciseSet = exerciseSet
         self._hasStarted = State(wrappedValue: exerciseSet.startedAt != nil)
@@ -45,8 +53,8 @@ struct EditExerciseSetView: View {
                 }
                 TextField("Reps", value: $exerciseSet.reps, formatter: NumberFormatter())
                     .keyboardType(.numberPad)
-                TextField("Weight", value: $exerciseSet.weight, formatter: NumberFormatter())
-                    .keyboardType(.numberPad)
+                TextField("Weight", value: $exerciseSet.weight, formatter: doubleFormatter)
+                    .keyboardType(.decimalPad)
             }
         }
         .onChange(of: hasStarted) { old, new in
