@@ -53,8 +53,14 @@ struct EditExerciseSetView: View {
                 }
                 TextField("Reps", value: $exerciseSet.reps, formatter: NumberFormatter())
                     .keyboardType(.numberPad)
-                TextField("Weight", value: $exerciseSet.weight, formatter: doubleFormatter)
-                    .keyboardType(.decimalPad)
+                Stepper {
+                    TextField("Weight", value: $exerciseSet.weight, formatter: doubleFormatter)
+                        .keyboardType(.decimalPad)
+                } onIncrement: {
+                    increaseWeight()
+                } onDecrement: {
+                    decreaseWeight()
+                }
             }
         }
         .onChange(of: hasStarted) { old, new in
@@ -71,6 +77,32 @@ struct EditExerciseSetView: View {
             } else {
                 exerciseSet.endedAt = nil
             }
+        }
+    }
+
+    func increaseWeight() {
+        let weight = exerciseSet.weight
+        if weight < 5 {
+            exerciseSet.weight = 5
+        } else if weight < 22.5 {
+            exerciseSet.weight = (round(weight / 2.5) + 1) * 2.5
+        } else if weight < 50 {
+            exerciseSet.weight = (round(weight / 5) + 1) * 5
+        } else if weight < 52.5 {
+            exerciseSet.weight = 52.5
+        }
+    }
+
+    func decreaseWeight() {
+        let weight = exerciseSet.weight
+        if weight > 52.5 {
+            exerciseSet.weight = 52.5
+        } else if weight > 50 {
+            exerciseSet.weight = 50
+        } else if weight > 22.5 {
+            exerciseSet.weight = (round(weight / 5) - 1) * 5
+        } else if weight > 5 {
+            exerciseSet.weight = (round(weight / 2.5) - 1) * 2.5
         }
     }
 }
