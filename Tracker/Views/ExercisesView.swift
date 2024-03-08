@@ -13,6 +13,17 @@ class Globals {
     var navigationPath = NavigationPath()
 }
 
+enum Screens : Hashable {
+    case stats(Exercise)
+
+    @ViewBuilder
+    func createView() -> some View {
+        switch self {
+        case .stats(let exercise): ExerciseStatsView(exercise: exercise)
+        }
+    }
+}
+
 struct ExercisesView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var exercises: [Exercise]
@@ -37,6 +48,7 @@ struct ExercisesView: View {
             .navigationTitle("Exercises")
             .navigationDestination(for: Exercise.self) { EditExerciseView(exercise: $0) }
             .navigationDestination(for: ExerciseSet.self) { EditExerciseSetView(exerciseSet: $0) }
+            .navigationDestination(for: Screens.self) { $0.createView() }
         }
         .environment(globals)
     }

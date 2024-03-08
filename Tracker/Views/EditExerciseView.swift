@@ -23,6 +23,10 @@ struct EditExerciseView: View {
                     .textInputAutocapitalization(.words)
             }
 
+            Button("Stats", systemImage: "chart.bar") {
+                globals.navigationPath.append(Screens.stats(exercise))
+            }
+
             if let lastSet = lastSet, let endedAt = lastSet.endedAt {
                 Section("Last Set") {
                     Text("Reps: \(lastSet.reps)")

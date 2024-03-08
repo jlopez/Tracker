@@ -25,6 +25,7 @@
 		A5D4E3352B97E814003E5D10 /* Model-v2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D4E3342B97E814003E5D10 /* Model-v2.swift */; };
 		A5D4E3372B97E844003E5D10 /* Model-v1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D4E3362B97E844003E5D10 /* Model-v1.swift */; };
 		A5D4E3392B97E85C003E5D10 /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D4E3382B97E85C003E5D10 /* Migrations.swift */; };
+		A5D4E33B2B97FB5A003E5D10 /* ExerciseStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D4E33A2B97FB5A003E5D10 /* ExerciseStatsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		A5D4E3342B97E814003E5D10 /* Model-v2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model-v2.swift"; sourceTree = "<group>"; };
 		A5D4E3362B97E844003E5D10 /* Model-v1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model-v1.swift"; sourceTree = "<group>"; };
 		A5D4E3382B97E85C003E5D10 /* Migrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrations.swift; sourceTree = "<group>"; };
+		A5D4E33A2B97FB5A003E5D10 /* ExerciseStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStatsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				A5AE136F2B8D7EFE009CE681 /* ExerciseSetRow.swift */,
 				A510534D2B894EDE008EF80C /* EditExerciseSetView.swift */,
 				A5AE13712B8D7F2C009CE681 /* PoundsPerSecondView.swift */,
+				A5D4E33A2B97FB5A003E5D10 /* ExerciseStatsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				A510534E2B894EDE008EF80C /* EditExerciseSetView.swift in Sources */,
 				A5271FDD2B6DC90D0049CD04 /* RestTimerView.swift in Sources */,
 				A5AE13752B8D7FE3009CE681 /* Model.swift in Sources */,
+				A5D4E33B2B97FB5A003E5D10 /* ExerciseStatsView.swift in Sources */,
 				A510534C2B894EC3008EF80C /* EditExerciseView.swift in Sources */,
 				A5D4E3352B97E814003E5D10 /* Model-v2.swift in Sources */,
 				A5D4E3372B97E844003E5D10 /* Model-v1.swift in Sources */,
