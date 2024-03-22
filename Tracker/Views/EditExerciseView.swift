@@ -54,6 +54,18 @@ struct EditExerciseView: View {
                 }
             }
 
+            if !todaySets.isEmpty {
+                Section("Today") {
+                    ExerciseSetsView(exerciseSets: todaySets)
+                }
+            }
+
+            if !previousDaySets.isEmpty {
+                Section("Previous") {
+                    ExerciseSetsView(exerciseSets: previousDaySets)
+                }
+            }
+
             if !exercise.exerciseSets.isEmpty {
                 Section("Sets") {
                     ExerciseSetsView(exerciseSets: exercise.exerciseSets)
