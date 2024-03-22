@@ -19,6 +19,7 @@
 		A5271FCC2B6B6EBD0049CD04 /* TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5271FCB2B6B6EBD0049CD04 /* TrackerUITests.swift */; };
 		A5271FCE2B6B6EBD0049CD04 /* TrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5271FCD2B6B6EBD0049CD04 /* TrackerUITestsLaunchTests.swift */; };
 		A5271FDD2B6DC90D0049CD04 /* RestTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5271FDC2B6DC90D0049CD04 /* RestTimerView.swift */; };
+		A55C29162BAE15DD0043DDF2 /* Calendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C29152BAE15DD0043DDF2 /* Calendar+Extensions.swift */; };
 		A5AE13702B8D7EFE009CE681 /* ExerciseSetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE136F2B8D7EFE009CE681 /* ExerciseSetRow.swift */; };
 		A5AE13722B8D7F2C009CE681 /* PoundsPerSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE13712B8D7F2C009CE681 /* PoundsPerSecondView.swift */; };
 		A5AE13752B8D7FE3009CE681 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE13742B8D7FE3009CE681 /* Model.swift */; };
@@ -63,6 +64,7 @@
 		A5271FCB2B6B6EBD0049CD04 /* TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerUITests.swift; sourceTree = "<group>"; };
 		A5271FCD2B6B6EBD0049CD04 /* TrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A5271FDC2B6DC90D0049CD04 /* RestTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestTimerView.swift; sourceTree = "<group>"; };
+		A55C29152BAE15DD0043DDF2 /* Calendar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extensions.swift"; sourceTree = "<group>"; };
 		A5AE136E2B8D7DAF009CE681 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A5AE136F2B8D7EFE009CE681 /* ExerciseSetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSetRow.swift; sourceTree = "<group>"; };
 		A5AE13712B8D7F2C009CE681 /* PoundsPerSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoundsPerSecondView.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				A51053502B894F5F008EF80C /* Extensions.swift */,
+				A55C29152BAE15DD0043DDF2 /* Calendar+Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 			files = (
 				A5271FAF2B6B6EBB0049CD04 /* ExercisesView.swift in Sources */,
 				A510534E2B894EDE008EF80C /* EditExerciseSetView.swift in Sources */,
+				A55C29162BAE15DD0043DDF2 /* Calendar+Extensions.swift in Sources */,
 				A5271FDD2B6DC90D0049CD04 /* RestTimerView.swift in Sources */,
 				A5AE13752B8D7FE3009CE681 /* Model.swift in Sources */,
 				A5D4E33B2B97FB5A003E5D10 /* ExerciseStatsView.swift in Sources */,

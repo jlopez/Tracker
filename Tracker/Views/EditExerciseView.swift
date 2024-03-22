@@ -12,9 +12,28 @@ struct EditExerciseView: View {
     @Environment(Globals.self) private var globals
     @Bindable var exercise: Exercise
 
+    var previousDaySets: [ExerciseSet] {
+        exercise.previousSets(from: .now)
+    }
+
+    var todaySets: [ExerciseSet] {
+        exercise.sets(for: .now)
+    }
+
+    var setsDoneToday: Int {
+        todaySets.count
+    }
+
+    var previousDayEquivalentSet: ExerciseSet? {
+        let previousSets = previousDaySets
+        guard previousSets.count > setsDoneToday else { return nil }
+        return previousSets[setsDoneToday]
+    }
+
+    var nextReps: Int { previousDayEquivalentSet?.reps ?? 0 }
+    var nextWeight: Double { previousDayEquivalentSet?.weight ?? 0 }
+
     var lastSet: ExerciseSet? { exercise.exerciseSets.max { $0.endedAt ?? .distantPast < $1.endedAt ?? .distantPast } }
-    var lastReps: Int { lastSet?.reps ?? 0 }
-    var lastWeight: Double { lastSet?.weight ?? 0 }
 
     var body: some View {
         Form {
@@ -29,8 +48,8 @@ struct EditExerciseView: View {
 
             if let lastSet = lastSet, let endedAt = lastSet.endedAt {
                 Section("Last Set") {
-                    Text("Reps: \(lastSet.reps)")
-                    Text("Weight: \(lastSet.weight, specifier: "%.1f")")
+                    Text("Reps: \(nextReps)")
+                    Text("Weight: \(nextWeight, specifier: "%.1f")")
                     Text("Completed \(endedAt, style: .relative) ago")
                 }
             }
@@ -56,10 +75,11 @@ struct EditExerciseView: View {
 
     func addExerciseSet() {
         let exerciseSet = ExerciseSet(
-            reps: lastReps,
-            weight: lastWeight
+            reps: nextReps,
+            weight: nextWeight
         )
         exercise.exerciseSets.append(exerciseSet)
         globals.navigationPath.append(exerciseSet)
     }
 }
+
