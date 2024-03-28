@@ -8,49 +8,45 @@
 import SwiftUI
 import SwiftData
 import Observation
-import AVFoundation
+import UserNotifications
 
 @Observable
-class Globals {
+class Globals: NSObject, UNUserNotificationCenterDelegate {
     var navigationPath = NavigationPath()
     var lastSet: ExerciseSet?
 
-    @ObservationIgnored var task: Task<(), Never>?
-
-    @ObservationIgnored var synthesizer: AVSpeechSynthesizer!
-    @ObservationIgnored var player: AVAudioPlayer?
-
-    init() {
-        armSetReminderSound()
+    override init() {
+        super.init()
+        UNUserNotificationCenter.current().delegate = self
+        armReminderNotification()
     }
 
-    func armSetReminderSound() {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
+        return .sound
+    }
+
+    func armReminderNotification() {
         withObservationTracking {
             guard let lastSet = lastSet,
                   let endedAt = lastSet.endedAt else { return }
-            let expiration = endedAt.addingTimeInterval(120-10-2).timeIntervalSinceNow
+            let expiration = endedAt.addingTimeInterval(10-2).timeIntervalSinceNow
             guard expiration > 0 else { return }
-            task = Task {
-                try? await Task.sleep(nanoseconds: UInt64(expiration * 1_000_000_000))
-                if task?.isCancelled ?? true { return }
-                self.playSetReminderSound()
+
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { success, error in
+                guard success else { return }
+                let content = UNMutableNotificationContent()
+                content.title = "Tracker"
+                content.body = "Ten seconds!"
+                content.sound = .init(named: .init("bell.m4a"))
+                content.interruptionLevel = .active
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: expiration, repeats: false)
+                let request = UNNotificationRequest(identifier: "reminder", content: content, trigger: trigger)
+                UNUserNotificationCenter.current().add(request)
             }
         } onChange: {
-            self.task?.cancel()
-            self.task = nil
-            Task { self.armSetReminderSound() }
+            UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: ["reminder"])
+            Task { self.armReminderNotification() }
         }
-    }
-
-    func playSetReminderSound() {
-        let utterance = AVSpeechUtterance(string: "Ten seconds!")
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        synthesizer = AVSpeechSynthesizer()
-        synthesizer.speak(utterance)
-
-        guard let url = Bundle.main.url(forResource: "bell", withExtension: "m4a") else { return }
-        player = try? AVAudioPlayer(contentsOf: url)
-        player?.play()
     }
 }
 
