@@ -11,6 +11,7 @@ struct EditExerciseSetView: View {
     @Bindable var exerciseSet: ExerciseSet
     @State private var hasStarted = false
     @State private var hasFinished = false
+    @Environment(Globals.self) private var globals: Globals?
 
     var doubleFormatter: NumberFormatter {
         let formatter = NumberFormatter()
@@ -28,6 +29,13 @@ struct EditExerciseSetView: View {
 
     var body: some View {
         Form {
+            if let lastSet = globals?.lastSet,
+               lastSet != exerciseSet,
+               let lastSetEndedAt = lastSet.endedAt {
+                Section("Last Set") {
+                    Text("Completed \(lastSetEndedAt, style: .relative) ago")
+                }
+            }
             Section {
                 if let endedAt = exerciseSet.endedAt {
                     HStack {
@@ -74,6 +82,7 @@ struct EditExerciseSetView: View {
         .onChange(of: hasFinished) { old, new in
             if new {
                 exerciseSet.endedAt = .now
+                globals?.lastSet = exerciseSet
             } else {
                 exerciseSet.endedAt = nil
             }
