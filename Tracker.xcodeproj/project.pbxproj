@@ -18,6 +18,7 @@
 		A5271FC22B6B6EBD0049CD04 /* TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5271FC12B6B6EBD0049CD04 /* TrackerTests.swift */; };
 		A5271FCC2B6B6EBD0049CD04 /* TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5271FCB2B6B6EBD0049CD04 /* TrackerUITests.swift */; };
 		A5271FCE2B6B6EBD0049CD04 /* TrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5271FCD2B6B6EBD0049CD04 /* TrackerUITestsLaunchTests.swift */; };
+		A53330482BB4FCEF000DF080 /* bell.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A53330472BB4FCEE000DF080 /* bell.m4a */; };
 		A55C29162BAE15DD0043DDF2 /* Calendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55C29152BAE15DD0043DDF2 /* Calendar+Extensions.swift */; };
 		A5AE13702B8D7EFE009CE681 /* ExerciseSetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE136F2B8D7EFE009CE681 /* ExerciseSetRow.swift */; };
 		A5AE13722B8D7F2C009CE681 /* PoundsPerSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AE13712B8D7F2C009CE681 /* PoundsPerSecondView.swift */; };
@@ -62,6 +63,7 @@
 		A5271FC72B6B6EBD0049CD04 /* TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5271FCB2B6B6EBD0049CD04 /* TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerUITests.swift; sourceTree = "<group>"; };
 		A5271FCD2B6B6EBD0049CD04 /* TrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A53330472BB4FCEE000DF080 /* bell.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bell.m4a; sourceTree = "<group>"; };
 		A55C29152BAE15DD0043DDF2 /* Calendar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extensions.swift"; sourceTree = "<group>"; };
 		A5AE136E2B8D7DAF009CE681 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A5AE136F2B8D7EFE009CE681 /* ExerciseSetRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSetRow.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				A5271FB72B6B6EBD0049CD04 /* Tracker.entitlements */,
 				A5271FB82B6B6EBD0049CD04 /* Info.plist */,
 				A5271FB42B6B6EBD0049CD04 /* Preview Content */,
+				A53330472BB4FCEE000DF080 /* bell.m4a */,
 			);
 			path = Tracker;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5271FB62B6B6EBD0049CD04 /* Preview Assets.xcassets in Resources */,
+				A53330482BB4FCEF000DF080 /* bell.m4a in Resources */,
 				A5271FB32B6B6EBD0049CD04 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

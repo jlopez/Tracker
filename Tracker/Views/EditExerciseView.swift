@@ -92,6 +92,7 @@ struct EditExerciseView: View {
         )
         exercise.exerciseSets.append(exerciseSet)
         globals.navigationPath.append(exerciseSet)
+        globals.lastSet = exerciseSet
     }
 }
 

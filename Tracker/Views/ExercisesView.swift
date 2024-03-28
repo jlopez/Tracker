@@ -7,11 +7,54 @@
 
 import SwiftUI
 import SwiftData
+import Observation
+import AVFoundation
 
 @Observable
 class Globals {
     var navigationPath = NavigationPath()
+    var lastSet: ExerciseSet?
+
+    @ObservationIgnored var task: Task<(), Never>?
+
+    @ObservationIgnored var synthesizer: AVSpeechSynthesizer!
+    @ObservationIgnored var player: AVAudioPlayer?
+
+    init() {
+        armSetReminderSound()
+    }
+
+    func armSetReminderSound() {
+        withObservationTracking {
+            guard let lastSet = lastSet,
+                  let endedAt = lastSet.endedAt else { return }
+            let expiration = endedAt.addingTimeInterval(120-10-2).timeIntervalSinceNow
+            guard expiration > 0 else { return }
+            task = Task {
+                try? await Task.sleep(nanoseconds: UInt64(expiration * 1_000_000_000))
+                if task?.isCancelled ?? true { return }
+                self.playSetReminderSound()
+            }
+        } onChange: {
+            self.task?.cancel()
+            self.task = nil
+            Task { self.armSetReminderSound() }
+        }
+    }
+
+    func playSetReminderSound() {
+        let utterance = AVSpeechUtterance(string: "Ten seconds!")
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        synthesizer = AVSpeechSynthesizer()
+        synthesizer.speak(utterance)
+
+        guard let url = Bundle.main.url(forResource: "bell", withExtension: "m4a") else { return }
+        player = try? AVAudioPlayer(contentsOf: url)
+        player?.play()
+    }
 }
+
+var globals = Globals()
 
 enum Screens : Hashable {
     case stats(Exercise)
@@ -28,7 +71,7 @@ struct ExercisesView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var exercises: [Exercise]
     @State private var showAddExercise: Bool = false
-    @State private var globals = Globals()
+    @State private var globals = Tracker.globals
 
     var body: some View {
         NavigationStack(path: $globals.navigationPath) {
