@@ -91,12 +91,10 @@ struct EditExerciseSetView: View {
 
     func increaseWeight() {
         let weight = exerciseSet.weight
-        if weight < 5 {
-            exerciseSet.weight = 5
-        } else if weight < 22.5 {
-            exerciseSet.weight = (round(weight / 2.5) + 1) * 2.5
+        if weight < 25 {
+            exerciseSet.weight = (floor(weight / 2.5) + 1) * 2.5
         } else if weight < 50 {
-            exerciseSet.weight = (round(weight / 5) + 1) * 5
+            exerciseSet.weight = (floor(weight / 5) + 1) * 5
         } else if weight < 52.5 {
             exerciseSet.weight = 52.5
         }
@@ -106,12 +104,10 @@ struct EditExerciseSetView: View {
         let weight = exerciseSet.weight
         if weight > 52.5 {
             exerciseSet.weight = 52.5
-        } else if weight > 50 {
-            exerciseSet.weight = 50
-        } else if weight > 22.5 {
-            exerciseSet.weight = (round(weight / 5) - 1) * 5
+        } else if weight > 25 {
+            exerciseSet.weight = (ceil(weight / 5) - 1) * 5
         } else if weight > 5 {
-            exerciseSet.weight = (round(weight / 2.5) - 1) * 2.5
+            exerciseSet.weight = (ceil(weight / 2.5) - 1) * 2.5
         }
     }
 }
