@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import AVFoundation
 
 @main
 struct TrackerApp: App {
@@ -25,6 +26,11 @@ struct TrackerApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
+
+    init() {
+        let audioSession = AVAudioSession.sharedInstance()
+        try? audioSession.setCategory(.ambient)
+    }
 
     var body: some Scene {
         WindowGroup {
