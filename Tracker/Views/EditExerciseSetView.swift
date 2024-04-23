@@ -75,6 +75,7 @@ struct EditExerciseSetView: View {
             if new {
                 // TODO: Fix repetition
                 exerciseSet.startedAt = .now
+                globals?.lastSet = exerciseSet
             } else {
                 exerciseSet.startedAt = nil
             }
