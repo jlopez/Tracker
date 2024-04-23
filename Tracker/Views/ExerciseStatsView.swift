@@ -76,7 +76,6 @@ struct DayStatRow : View {
     var body: some View {
         let totalPounds = sets.reduce(0) { $0 + $1.exerciseSet.totalPounds }
         let totalReps = sets.reduce(0) { $0 + $1.exerciseSet.reps }
-        let totalWeight = sets.reduce(0) { $0 + $1.exerciseSet.weight }
         let averagePoundsPerSecond = sets.reduce(0) { $0 + ($1.exerciseSet.poundsPerSecond ?? 0) } / Double(sets.count)
         let minTime = sets.min { $0.exerciseSet.endedAt! < $1.exerciseSet.endedAt! }!.exerciseSet.endedAt!
         let maxTime = sets.max { $0.exerciseSet.endedAt! < $1.exerciseSet.endedAt! }!.exerciseSet.endedAt!

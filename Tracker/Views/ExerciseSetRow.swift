@@ -62,7 +62,6 @@ struct ExerciseSetRow: View {
 }
 
 #Preview {
-    let exerciseSet = ExerciseSet()
     return List {
         ExerciseSetRow(exerciseSet: ExerciseSet(reps: 8, weight: 22.5))
         ExerciseSetRow(exerciseSet: ExerciseSet(reps: 8, weight: 25))
