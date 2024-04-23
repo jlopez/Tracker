@@ -29,7 +29,7 @@ class Globals: NSObject, UNUserNotificationCenterDelegate {
         withObservationTracking {
             guard let lastSet = lastSet,
                   let endedAt = lastSet.endedAt else { return }
-            let expiration = endedAt.addingTimeInterval(10-2).timeIntervalSinceNow
+            let expiration = endedAt.addingTimeInterval(120-10-2).timeIntervalSinceNow
             guard expiration > 0 else { return }
 
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { success, error in
