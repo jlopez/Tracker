@@ -23,7 +23,10 @@ struct ExerciseSetRow: View {
             Spacer()
             VStack(alignment: .trailing) {
                 Text("\(reps) \(Image(systemName: "arrow.triangle.2.circlepath.circle.fill"))")
-                Text("\(weight, specifier: "%.1f") \(Image(systemName: "scalemass.fill"))")
+                // Omit the decimal point if the weight is a whole number
+                let scaled = Int(weight * 10)
+                let specifier = scaled % 10 == 0 ? "%.0f" : "%.1f"
+                Text("\(weight, specifier: specifier) \(Image(systemName: "scalemass.fill"))")
             }
             .font(.caption)
         }
@@ -61,8 +64,8 @@ struct ExerciseSetRow: View {
 #Preview {
     let exerciseSet = ExerciseSet()
     return List {
-        ExerciseSetRow(exerciseSet: exerciseSet)
-        ExerciseSetRow(exerciseSet: exerciseSet)
-        ExerciseSetRow(exerciseSet: exerciseSet)
+        ExerciseSetRow(exerciseSet: ExerciseSet(reps: 8, weight: 22.5))
+        ExerciseSetRow(exerciseSet: ExerciseSet(reps: 8, weight: 25))
+        ExerciseSetRow(exerciseSet: ExerciseSet(reps: 8, weight: 30))
     }
 }

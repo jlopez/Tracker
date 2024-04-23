@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct EditExerciseView: View {
     @Environment(\.modelContext) private var modelContext
@@ -95,3 +96,20 @@ struct EditExerciseView: View {
     }
 }
 
+#Preview {
+    let modelContainer = try! ModelContainer(for: Exercise.self, configurations: .init(isStoredInMemoryOnly: true))
+    let exercise = Exercise(name: "Biceps Curl")
+    modelContainer.mainContext.insert(exercise)
+    exercise.exerciseSets.append(ExerciseSet(
+        startedAt: .now.addingTimeInterval(-17.38),
+        endedAt: .now,
+        reps: 8,
+        weight: 22.5))
+    exercise.exerciseSets.append(ExerciseSet(
+        startedAt: .now.addingTimeInterval(-132-18.11),
+        endedAt: .now.addingTimeInterval(-120),
+        reps: 8,
+        weight: 25))
+    return EditExerciseView(exercise: exercise)
+        .environment(Globals())
+}
