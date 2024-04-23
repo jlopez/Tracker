@@ -59,8 +59,14 @@ struct EditExerciseSetView: View {
                 if hasFinished {
                     DatePicker("endedAt", selection: $exerciseSet.endedAt ?? Date())
                 }
-                TextField("Reps", value: $exerciseSet.reps, formatter: NumberFormatter())
-                    .keyboardType(.numberPad)
+                Stepper {
+                    TextField("Reps", value: $exerciseSet.reps, formatter: NumberFormatter())
+                        .keyboardType(.numberPad)
+                } onIncrement: {
+                    exerciseSet.reps += 1
+                } onDecrement: {
+                    exerciseSet.reps -= 1
+                }
                 Stepper {
                     TextField("Weight", value: $exerciseSet.weight, formatter: doubleFormatter)
                         .keyboardType(.decimalPad)
